@@ -8,9 +8,6 @@ import arrowDown from './arrow-down.svg';
 const TranslatorForm = () => {
   let key;
 
-  console.log(import.meta.env.PROD);
-  console.log(import.meta.env.VITE_TRANSLATE_KEY);
-  console.log(process.env.VITE_TRANSLATE_KEY);
   const getKey = async () => {
     if (import.meta.env.PROD) {
       key = import.meta.env.VITE_TRANSLATE_KEY;
@@ -83,10 +80,8 @@ const TranslatorForm = () => {
 
   const updateHistory = (code, text) => {
     const languageName = languageList.find((language) => language.code === code).name;
-    // const historyLog = fullName + ': ' + text + '\n';
 
     setHistory((currentHistory) => [...currentHistory, { languageName, text }]);
-    console.log(history);
   };
   const handleSubmit = () => {
     event.preventDefault();
@@ -110,10 +105,6 @@ const TranslatorForm = () => {
   const handleLanguageChange = (event) => {
     setTargetLanguage(event.target.value);
   };
-
-  useEffect(() => {
-    console.log(history);
-  }, [history]);
 
   return (
     <div>
@@ -181,7 +172,7 @@ const TranslatorForm = () => {
         {history.map(({ languageName, text }, index) => (
           <div key={index}>
             {index !== 0 && <img src={arrowDown} alt="arrow-down" className="arrow-down" />}
-            <p className="log">
+            <p className="history-log">
               <span className="language-name"> {languageName + ':'}</span>
 
               <span> {text}</span>
