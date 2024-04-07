@@ -1,5 +1,6 @@
 :root {
   --slider-width: 10rem;
+  --background-color: #3f2d48;
 }
 
 /* firefox */
@@ -14,7 +15,7 @@ input[type='range'] {
 input[type='range']::-moz-range-track {
   width: var(--slider-width);
   height: 5px;
-  background: #42294f;
+  background: var(--background-color);
   border: none;
   border-radius: 3px;
 }
@@ -33,7 +34,7 @@ input[type='range']:-moz-focusring {
 }
 
 input[type='range']:focus::-moz-range-track {
-  background: #42294f;
+  background: var(--background-color);
 }
 
 /* chrome-like */
@@ -45,7 +46,7 @@ input[type='range'] {
 input[type='range']::-webkit-slider-runnable-track {
   width: var(--slider-width);
   height: 5px;
-  background: #42294f;
+  background: var(--background-color);
   border: none;
   border-radius: 3px;
 }
@@ -65,5 +66,5 @@ input[type='range']:focus {
 }
 
 input[type='range']:focus::-webkit-slider-runnable-track {
-  background: #42294f;
+  background: var(--background-color);
 }

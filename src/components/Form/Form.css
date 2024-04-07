@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-color: rgb(223, 175, 255);
+  --placeholder-color: rgb(201, 201, 201);
+}
+
 .submit-btn,
 .text-input {
   -webkit-appearance: none;
@@ -9,44 +18,62 @@
 }
 
 ::placeholder {
-  color: rgb(255, 255, 255);
+  color: var(--placeholder-color);
   opacity: 0.7; /* Firefox */
 }
 
 ::-ms-input-placeholder {
   /* Edge 12 -18 */
-  color: rgb(255, 255, 255);
+  color: var(--placeholder-color);
   opacity: 0.7;
 }
 
-/* actual css */
-
-:root {
-  --accent-color: rgb(223, 175, 255);
+.translation-area {
+  display: flex;
+  gap: 5%;
 }
 
-.text-input {
-  border-radius: 0.5em;
-  width: clamp(20em, 70%, 50em);
-  margin-top: 1rem;
-  padding: 1em;
+.translation-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+}
 
-  background-color: #42294f;
+.text-input,
+.translated-text {
+  background-color: transparent;
   color: white;
+  font-family: inherit;
   font-size: large;
   font-weight: 400;
   font-style: inherit;
+
+  border: var(--accent-color);
+
+  border-radius: 0.5em;
+  border-width: 2px;
+  border-style: solid;
+
+  padding: 1em;
+  margin: 0;
+  width: 100%;
+
+  flex-grow: 1;
+
+  resize: none;
 }
 
 .submit-btn {
   border-radius: 5em;
-  margin: 1em 0;
+  margin: 0;
   padding: 0.7em 2em;
   background-color: var(--accent-color);
 
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  flex-grow: 0;
 }
 
 .submit-btn:hover {
@@ -54,34 +81,25 @@
 }
 
 .submit-btn:active {
-  background-color: color-mix(in srgb, var(--accent-color) 100%, black 50%);
+  background-color: color-mix(in srgb, var(--accent-color) 100%, black 70%);
 }
 
 .text-input-label {
   display: block;
 }
 
-.translated-text {
-  border: var(--accent-color);
-  border-radius: 0.5em;
-  border-width: 2px;
-  border-style: solid;
-
-  margin-top: 2rem;
-  padding: 1em;
-  width: clamp(20em, 70%, 50em);
-}
-
-.translated-text:empty {
+/* .translated-text:empty {
   display: none;
 }
 
 .translated-text:empty .translated-header {
   display: none;
-}
+} */
 
 .options {
-  gap: 5%;
+  gap: 2rem;
+  margin: 2rem 0 3rem 0;
+  row-gap: 1rem;
 }
 
 .sub-options {
@@ -94,10 +112,48 @@
   flex-wrap: wrap;
 }
 
+.submit-language-pair {
+  display: flex;
+  gap: 2rem;
+}
+
 .distortion {
   background: none;
   border: none;
 
-  color: white;
+  color: inherit;
   font-size: large;
+}
+
+.arrow-down {
+  width: 1.3rem;
+}
+
+.log {
+  font-size: 1rem;
+}
+
+.language-name {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.history {
+  margin-bottom: 10rem;
+}
+
+@media screen and (max-width: 800px) {
+  .translation-area {
+    flex-direction: column;
+  }
+
+  .options {
+    flex-direction: column-reverse;
+    align-items: start;
+    margin-top: 1rem;
+  }
+
+  .submit-language-pair {
+    flex-direction: row-reverse;
+  }
 }
