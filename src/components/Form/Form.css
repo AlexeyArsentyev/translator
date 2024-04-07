@@ -34,6 +34,8 @@
   background-color: #42294f;
   color: white;
   font-size: large;
+  font-weight: 400;
+  font-style: inherit;
 }
 
 .submit-btn {
@@ -74,12 +76,16 @@
   display: none;
 }
 
+.translated-text:empty .translated-header {
+  display: none;
+}
+
 .options {
   gap: 5%;
 }
 
-.options-distortion {
-  gap: 1rem;
+.sub-options {
+  gap: 0.5rem;
 }
 
 .center-flex {

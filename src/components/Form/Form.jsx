@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
 import './slider.css';
+import './languageSelector.css';
 import languageList from './languageCodes.json';
 
 const TranslatorForm = () => {
   const [formText, setFormText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
   const [distortionLevel, setDistortionLevel] = useState(1);
+  const [targetLanguage, setTargetLanguage] = useState('en');
+  const [history, setHistory] = useState([]);
 
   let text = '';
 
   const key = 'AIzaSyCk_wRLpPQjjfOZwPdYHVQ4lfolzd03v40';
 
-  const languagesLength = languageList.languages.length;
-
-  const targetLanguage = 'en';
+  const length = languageList.length;
 
   const translate = async (languageCode) => {
     try {
-      const randomId = Math.floor(Math.random() * languagesLength);
+      const randomId = Math.floor(Math.random() * length);
 
       let code;
       if (!languageCode) {
-        code = languageList.languages[randomId].code;
+        code = languageList[randomId].code;
       } else {
         code = languageCode;
       }
@@ -55,10 +56,14 @@ const TranslatorForm = () => {
 
       text = data.data.translations[0].translatedText;
 
-      text = text.replace(/&#39;/g, '');
+      // text = text.replace(/&#39;/g, '');
 
-      const fullName = languageList.languages.find((language) => language.code === code).name;
-      console.log(fullName, ': ', text);
+      const fullName = languageList.find((language) => language.code === code).name;
+      const historyLog = fullName + ': ' + text + '\n';
+
+      const newHistory = (prevHistory) => [...prevHistory, historyLog];
+      setHistory(newHistory);
+      console.log(newHistory);
 
       setTranslatedText(text);
     } catch (error) {
@@ -71,10 +76,12 @@ const TranslatorForm = () => {
       return;
     }
 
+    setHistory([]);
+
     for (let i = 0; i < distortionLevel; i++) {
       await translate();
     }
-    await translate('en');
+    await translate(targetLanguage);
   };
 
   const handleSubmit = () => {
@@ -83,8 +90,14 @@ const TranslatorForm = () => {
     fetchText();
   };
 
+  const handleLanguageChange = (event) => {
+    setTargetLanguage(event.target.value);
+  };
+
   return (
     <div>
+      <img src="./down.png" alt="arrow-down" />
+      <h2>Input text</h2>
       <form onSubmit={handleSubmit}>
         <label className="text-input-label" htmlFor="text"></label>
         <textarea
@@ -95,11 +108,29 @@ const TranslatorForm = () => {
           value={formText}
           onChange={(e) => setFormText(e.target.value)}
         ></textarea>
+
+        {/* options */}
+
         <div className="options center-flex">
           <button className="submit-btn" type="submit">
             Translate
           </button>
-          <div className="options-distortion center-flex">
+
+          <div className="sub-options center-flex">
+            <label htmlFor="language-select">To: </label>
+            <select
+              className="language-select"
+              id="language-select"
+              onChange={handleLanguageChange}
+            >
+              <option value="en">English</option>
+
+              {languageList.map((language) => (
+                <option value={language.code}>{language.name}</option>
+              ))}
+            </select>
+          </div>
+          <div className="sub-options center-flex">
             <label htmlFor="distortion">Chaos level: </label>
             <input
               type="range"
@@ -113,7 +144,15 @@ const TranslatorForm = () => {
           </div>
         </div>
       </form>
-      <p className="translated-text">{translatedText}</p>
+
+      <p className="history">
+        {history.map((log) => (
+          <div>
+            <p>{log}</p>
+            <img src="./arrow-down (2).svg" alt="arrow-down" />
+          </div>
+        ))}
+      </p>
     </div>
   );
 };

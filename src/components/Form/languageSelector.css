@@ -1,0 +1,15 @@
+.language-select {
+  appearance: none;
+  background-color: #42294f;
+  border: none;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+
+  color: inherit;
+  border-radius: 0.5em;
+  padding: 0.7em;
+}
