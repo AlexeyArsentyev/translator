@@ -94,6 +94,11 @@ const TranslatorForm = () => {
       return;
     }
 
+    if (text === 'something') {
+      setTranslatedText('Not literally!');
+      return;
+    }
+
     setHistory([]);
     updateHistory(targetLanguage, formText);
     for (let i = 0; i < distortionLevel; i++) {
@@ -107,7 +112,7 @@ const TranslatorForm = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
         <div className="translation-area">
           <div className="translation-section">
@@ -123,10 +128,12 @@ const TranslatorForm = () => {
               onChange={(e) => setFormText(e.target.value)}
             ></textarea>
           </div>
-          <div className="translation-section">
-            <h2 className="translated-header">Translated text</h2>
-            <p className="translated-text">{translatedText}</p>
-          </div>
+          {translatedText && (
+            <div className="translation-section">
+              <h2 className="translated-header">Translated text</h2>
+              <p className="translated-text">{translatedText}</p>
+            </div>
+          )}
         </div>
 
         {/* options */}
@@ -168,19 +175,19 @@ const TranslatorForm = () => {
       {/* history */}
 
       {history.length > 0 && <h2>Translations</h2>}
-      <div className="history">
+      <ul className="history">
         {history.map(({ languageName, text }, index) => (
-          <div key={index}>
+          <li key={index}>
             {index !== 0 && <img src={arrowDown} alt="arrow-down" className="arrow-down" />}
             <p className="history-log">
               <span className="language-name"> {languageName + ':'}</span>
 
               <span> {text}</span>
             </p>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </>
   );
 };
 

@@ -5,6 +5,8 @@ import TranslatorForm from './components/Form/Form.jsx';
 export default () => (
   <div className="main-wrapper">
     <h1>Cursed translator</h1>
-    <TranslatorForm />
+    <main>
+      <TranslatorForm />
+    </main>
   </div>
 );
