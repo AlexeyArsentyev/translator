@@ -3,3 +3,4 @@ dist
 .cache
 .env
 devEnv.json
+config.env
