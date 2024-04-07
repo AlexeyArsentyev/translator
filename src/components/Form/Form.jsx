@@ -6,6 +6,20 @@ import languageList from './languageCodes.json';
 import arrowDown from './arrow-down.svg';
 
 const TranslatorForm = () => {
+  let key;
+
+  const getKey = async () => {
+    if (import.meta.env.PROD) {
+      key = import.meta.env.VITE_TRANSLATE_KEY;
+    } else {
+      const devEnv = await import('../../../devEnv.json');
+      key = devEnv.key;
+    }
+    return key;
+  };
+
+  getKey();
+
   const [formText, setFormText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
   const [distortionLevel, setDistortionLevel] = useState(3);
@@ -13,7 +27,6 @@ const TranslatorForm = () => {
   const [history, setHistory] = useState([]);
 
   let text = '';
-  const key = 'AIzaSyCk_wRLpPQjjfOZwPdYHVQ4lfolzd03v40';
 
   const length = languageList.length;
 
