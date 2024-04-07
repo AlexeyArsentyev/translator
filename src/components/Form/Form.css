@@ -96,18 +96,6 @@ ul {
   max-width: calc(50% - var(--translation-area-gap) / 2);
 }
 
-/* .translation-section:empty {
-  display: none;
-}
-
-.translated-text:empty {
-  display: none;
-}
-
-.translated-header:has(+ *:empty) {
-  display: none;
-} */
-
 .options {
   gap: 2rem;
   margin: 2rem 0 3rem 0;
@@ -156,7 +144,7 @@ ul {
   padding: 0;
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: 800px) {
   .translation-area {
     flex-direction: column;
   }
