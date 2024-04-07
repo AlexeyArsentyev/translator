@@ -8,6 +8,9 @@ import arrowDown from './arrow-down.svg';
 const TranslatorForm = () => {
   let key;
 
+  console.log(import.meta.env.PROD);
+  console.log(import.meta.env.VITE_TRANSLATE_KEY);
+  console.log(process.env.VITE_TRANSLATE_KEY);
   const getKey = async () => {
     if (import.meta.env.PROD) {
       key = import.meta.env.VITE_TRANSLATE_KEY;
