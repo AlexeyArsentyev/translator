@@ -142,6 +142,7 @@ ul {
   margin: 0;
   margin-bottom: 10rem;
   padding: 0;
+  width: clamp(10rem, 60%, 100rem);
 }
 
 @media (max-width: 800px) {
@@ -164,5 +165,10 @@ ul {
     justify-content: space-between;
     gap: 0;
     width: 100%;
+  }
+}
+@media (max-width: 380px) {
+  .submit-btn {
+    padding: 0.7em 1em;
   }
 }

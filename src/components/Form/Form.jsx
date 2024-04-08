@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Form.css';
 import './slider.css';
 import './languageSelector.css';
@@ -111,6 +111,13 @@ const TranslatorForm = () => {
     setTargetLanguage(event.target.value);
   };
 
+  const onEnterPress = (e) => {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -126,6 +133,7 @@ const TranslatorForm = () => {
               type="text"
               value={formText}
               onChange={(e) => setFormText(e.target.value)}
+              onKeyDown={onEnterPress}
             ></textarea>
           </div>
           {translatedText && (
@@ -182,7 +190,7 @@ const TranslatorForm = () => {
             <p className="history-log">
               <span className="language-name"> {languageName + ':'}</span>
 
-              <span> {text}</span>
+              <span className="history-log-text"> {text}</span>
             </p>
           </li>
         ))}
