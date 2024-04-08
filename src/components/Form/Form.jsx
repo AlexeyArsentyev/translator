@@ -4,6 +4,7 @@ import './slider.css';
 import './languageSelector.css';
 import languageList from './languageCodes.json';
 import arrowDown from './arrow-down.svg';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const TranslatorForm = () => {
   let key;
@@ -126,7 +127,9 @@ const TranslatorForm = () => {
             <h2>Input text</h2>
 
             <label className="text-input-label" htmlFor="text"></label>
-            <textarea
+            <TextareaAutosize
+              minRows="1"
+              maxRows="15"
               placeholder="Write something"
               className="text-input"
               id="text"
@@ -134,7 +137,7 @@ const TranslatorForm = () => {
               value={formText}
               onChange={(e) => setFormText(e.target.value)}
               onKeyDown={onEnterPress}
-            ></textarea>
+            ></TextareaAutosize>
           </div>
           {translatedText && (
             <div className="translation-section">
