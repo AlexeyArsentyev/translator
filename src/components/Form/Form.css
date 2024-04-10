@@ -130,9 +130,6 @@ ul {
 }
 
 .copy-btn-wrapper {
-  margin-left: auto;
-  margin-right: 2rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -140,6 +137,7 @@ ul {
 
 .copy-btn {
   width: 2rem;
+  cursor: pointer;
 }
 
 .copy-btn:hover {

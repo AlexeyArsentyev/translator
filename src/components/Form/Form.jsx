@@ -145,7 +145,21 @@ const TranslatorForm = () => {
           </div>
           {translatedText && (
             <div className="translation-section">
-              <h2 className="translated-header">Translated text</h2>
+              <div className="copy-btn-wrapper">
+                <h2 className="translated-header">Translated text</h2>
+                <img
+                  className="copy-btn"
+                  src={copyImg}
+                  alt="copy"
+                  onClick={() => {
+                    navigator.clipboard.writeText(translatedText);
+                    setIsCopied(true);
+                  }}
+                />
+
+                {isCopied && <span className="large-font">Copied!</span>}
+              </div>
+
               <p className="translated-text large-font">{translatedText}</p>
             </div>
           )}
@@ -184,21 +198,6 @@ const TranslatorForm = () => {
               onChange={(e) => setDistortionLevel(e.target.value)}
             />
           </div>
-          {translatedText && (
-            <div className="copy-btn-wrapper">
-              {isCopied && <span className="large-font">Copied!</span>}
-
-              <img
-                className="copy-btn"
-                src={copyImg}
-                alt="copy"
-                onClick={() => {
-                  navigator.clipboard.writeText(translatedText);
-                  setIsCopied(true);
-                }}
-              />
-            </div>
-          )}
         </section>
       </form>
 
