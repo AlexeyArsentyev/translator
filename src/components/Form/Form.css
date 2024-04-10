@@ -33,6 +33,10 @@ ul {
   list-style-type: none;
 }
 
+.large-font {
+  font-size: large;
+}
+
 .translation-area {
   display: flex;
   gap: var(--translation-area-gap);
@@ -50,7 +54,7 @@ ul {
   background-color: transparent;
   color: white;
   font-family: inherit;
-  font-size: large;
+
   font-weight: 400;
   font-style: inherit;
 
@@ -125,26 +129,26 @@ ul {
   font-size: large;
 }
 
-.arrow-down {
-  width: 1.3rem;
+.copy-btn-wrapper {
+  margin-left: auto;
+  margin-right: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.history-log {
-  font-size: 1rem;
+.copy-btn {
+  width: 2rem;
 }
 
-.language-name {
-  font-weight: 700;
-  color: var(--accent-color);
+.copy-btn:hover {
+  filter: brightness(0.8);
 }
 
-.history {
-  margin: 0;
-  margin-bottom: 10rem;
-  padding: 0;
-  width: clamp(10rem, 60%, 100rem);
+.copy-btn:active {
+  filter: brightness(0.6);
 }
-
 @media (max-width: 800px) {
   .translation-area {
     flex-direction: column;
@@ -165,6 +169,10 @@ ul {
     justify-content: space-between;
     gap: 0;
     width: 100%;
+  }
+
+  .copy-btn-wrapper {
+    margin: 0;
   }
 }
 @media (max-width: 380px) {

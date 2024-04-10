@@ -22,8 +22,8 @@ input[type='range']::-moz-range-track {
 
 input[type='range']::-moz-range-thumb {
   border: none;
-  height: 16px;
-  width: 16px;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   background: #ba92d5;
 }
@@ -54,8 +54,8 @@ input[type='range']::-webkit-slider-runnable-track {
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
-  height: 16px;
-  width: 16px;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   background: #ba92d5;
   margin-top: -4px;
@@ -66,5 +66,4 @@ input[type='range']:focus {
 }
 
 input[type='range']:focus::-webkit-slider-runnable-track {
-  background: var(--background-color);
 }

@@ -3,8 +3,9 @@ import './Form.css';
 import './slider.css';
 import './languageSelector.css';
 import languageList from './languageCodes.json';
-import arrowDown from './arrow-down.svg';
 import TextareaAutosize from 'react-textarea-autosize';
+import History from '../History/History';
+import copyImg from './copy.svg';
 
 const TranslatorForm = () => {
   let key;
@@ -26,6 +27,7 @@ const TranslatorForm = () => {
   const [distortionLevel, setDistortionLevel] = useState(3);
   const [targetLanguage, setTargetLanguage] = useState('en');
   const [history, setHistory] = useState([]);
+  const [isCopied, setIsCopied] = useState(false);
 
   let text = '';
 
@@ -64,6 +66,7 @@ const TranslatorForm = () => {
         const errorData = await response.json();
         console.error('API Error:', errorData.error.message);
         return;
+        f;
       }
 
       const data = await response.json();
@@ -74,6 +77,7 @@ const TranslatorForm = () => {
       updateHistory(code, text);
 
       setTranslatedText(text);
+      setIsCopied(false);
     } catch (error) {
       console.error('ERROR', error);
     }
@@ -122,16 +126,16 @@ const TranslatorForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="translation-area">
+        <section className="translation-area">
           <div className="translation-section">
             <h2>Input text</h2>
 
             <label className="text-input-label" htmlFor="text"></label>
             <TextareaAutosize
-              minRows="1"
+              minRows="3"
               maxRows="15"
               placeholder="Write something"
-              className="text-input"
+              className="text-input large-font"
               id="text"
               type="text"
               value={formText}
@@ -142,14 +146,14 @@ const TranslatorForm = () => {
           {translatedText && (
             <div className="translation-section">
               <h2 className="translated-header">Translated text</h2>
-              <p className="translated-text">{translatedText}</p>
+              <p className="translated-text large-font">{translatedText}</p>
             </div>
           )}
-        </div>
+        </section>
 
         {/* options */}
 
-        <div className="options center-flex">
+        <section className="options center-flex">
           <div className="submit-language-pair">
             <button className="submit-btn" type="submit">
               Translate
@@ -180,24 +184,25 @@ const TranslatorForm = () => {
               onChange={(e) => setDistortionLevel(e.target.value)}
             />
           </div>
-        </div>
+          {translatedText && (
+            <div className="copy-btn-wrapper">
+              {isCopied && <span className="large-font">Copied!</span>}
+
+              <img
+                className="copy-btn"
+                src={copyImg}
+                alt="copy"
+                onClick={() => {
+                  navigator.clipboard.writeText(translatedText);
+                  setIsCopied(true);
+                }}
+              />
+            </div>
+          )}
+        </section>
       </form>
 
-      {/* history */}
-
-      {history.length > 0 && <h2>Translations</h2>}
-      <ul className="history">
-        {history.map(({ languageName, text }, index) => (
-          <li key={index}>
-            {index !== 0 && <img src={arrowDown} alt="arrow-down" className="arrow-down" />}
-            <p className="history-log">
-              <span className="language-name"> {languageName + ':'}</span>
-
-              <span className="history-log-text"> {text}</span>
-            </p>
-          </li>
-        ))}
-      </ul>
+      <History history={history} />
     </>
   );
 };
