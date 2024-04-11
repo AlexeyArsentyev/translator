@@ -33,15 +33,15 @@ const TranslatorForm = () => {
 
   const length = languageList.length;
 
-  const translate = async (languageCode) => {
+  const translate = async (index) => {
     try {
       const randomId = Math.floor(Math.random() * length);
 
       let code;
-      if (!languageCode) {
-        code = languageList[randomId].code;
+      if (index === distortionLevel - 1) {
+        code = targetLanguage;
       } else {
-        code = languageCode;
+        code = languageList[randomId].code;
       }
 
       const body = {
@@ -74,6 +74,10 @@ const TranslatorForm = () => {
       text = data.data.translations[0].translatedText;
 
       text = text.replace(/&#39;/g, '');
+
+      if (index === 0) {
+        updateHistory(data.data.translations[0].detectedSourceLanguage, formText);
+      }
       updateHistory(code, text);
 
       setTranslatedText(text);
@@ -88,11 +92,6 @@ const TranslatorForm = () => {
 
     setHistory((currentHistory) => [...currentHistory, { languageName, text }]);
   };
-  const handleSubmit = () => {
-    event.preventDefault();
-    text = formText;
-    fetchText();
-  };
 
   const fetchText = async () => {
     if (!text) {
@@ -105,11 +104,10 @@ const TranslatorForm = () => {
     }
 
     setHistory([]);
-    updateHistory(targetLanguage, formText);
+
     for (let i = 0; i < distortionLevel; i++) {
-      await translate();
+      await translate(i);
     }
-    await translate(targetLanguage);
   };
 
   const handleLanguageChange = (event) => {
@@ -121,6 +119,12 @@ const TranslatorForm = () => {
       e.preventDefault();
       handleSubmit();
     }
+  };
+
+  const handleSubmit = () => {
+    event.preventDefault();
+    text = formText;
+    fetchText();
   };
 
   return (
@@ -157,7 +161,7 @@ const TranslatorForm = () => {
                   }}
                 />
 
-                {isCopied && <span className="large-font">Copied!</span>}
+                {isCopied && <span className="secondary-text">Copied</span>}
               </div>
 
               <p className="translated-text large-font">{translatedText}</p>
