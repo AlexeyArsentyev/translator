@@ -24,7 +24,7 @@ const TranslatorForm = () => {
 
   const [formText, setFormText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
-  const [distortionLevel, setDistortionLevel] = useState(3);
+  const [iterationCount, setIterationCount] = useState(3);
   const [targetLanguage, setTargetLanguage] = useState('en');
   const [history, setHistory] = useState([]);
   const [isCopied, setIsCopied] = useState(false);
@@ -38,10 +38,14 @@ const TranslatorForm = () => {
       const randomId = Math.floor(Math.random() * length);
 
       let code;
-      if (index === distortionLevel - 1) {
+      console.log(index, iterationCount, targetLanguage);
+      console.log(index == iterationCount);
+      if (index == iterationCount) {
         code = targetLanguage;
+        console.log('FIRST');
       } else {
         code = languageList[randomId].code;
+        console.log('SECOND');
       }
 
       const body = {
@@ -105,7 +109,7 @@ const TranslatorForm = () => {
 
     setHistory([]);
 
-    for (let i = 0; i < distortionLevel; i++) {
+    for (let i = 0; i < iterationCount * 1 + 1; i++) {
       await translate(i);
     }
   };
@@ -132,11 +136,11 @@ const TranslatorForm = () => {
       <form onSubmit={handleSubmit}>
         <section className="translation-area">
           <div className="translation-section">
-            <h2>Input text</h2>
+            <h2>Input</h2>
 
             <label className="text-input-label" htmlFor="text"></label>
             <TextareaAutosize
-              minRows="3"
+              minRows="1"
               maxRows="15"
               placeholder="Write something"
               className="text-input large-font"
@@ -149,19 +153,21 @@ const TranslatorForm = () => {
           </div>
           {translatedText && (
             <div className="translation-section">
-              <div className="copy-btn-wrapper">
-                <h2 className="translated-header">Translated text</h2>
-                <img
-                  className="copy-btn"
-                  src={copyImg}
-                  alt="copy"
-                  onClick={() => {
-                    navigator.clipboard.writeText(translatedText);
-                    setIsCopied(true);
-                  }}
-                />
+              <div className="flex-align-center flex-gap-medium">
+                <h2 className="translated-header">Translated</h2>
+                <div className="flex-align-center flex-gap-small">
+                  <img
+                    className="copy-btn"
+                    src={copyImg}
+                    alt="copy"
+                    onClick={() => {
+                      navigator.clipboard.writeText(translatedText);
+                      setIsCopied(true);
+                    }}
+                  />
 
-                {isCopied && <span className="secondary-text">Copied</span>}
+                  {isCopied && <span className="secondary-text">Copied</span>}
+                </div>
               </div>
 
               <p className="translated-text large-font">{translatedText}</p>
@@ -196,10 +202,10 @@ const TranslatorForm = () => {
               type="range"
               id="distortion"
               className="distortion"
-              value={distortionLevel}
+              value={iterationCount}
               max="10"
               min="1"
-              onChange={(e) => setDistortionLevel(e.target.value)}
+              onChange={(e) => setIterationCount(e.target.value)}
             />
           </div>
         </section>
