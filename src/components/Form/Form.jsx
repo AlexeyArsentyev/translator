@@ -38,14 +38,10 @@ const TranslatorForm = () => {
       const randomId = Math.floor(Math.random() * length);
 
       let code;
-      console.log(index, iterationCount, targetLanguage);
-      console.log(index == iterationCount);
       if (index == iterationCount) {
         code = targetLanguage;
-        console.log('FIRST');
       } else {
         code = languageList[randomId].code;
-        console.log('SECOND');
       }
 
       const body = {
