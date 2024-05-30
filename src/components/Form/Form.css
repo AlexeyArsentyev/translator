@@ -86,14 +86,16 @@ ul {
   font-weight: 600;
   flex-grow: 0;
 
-  box-shadow: 0 0 1.3rem var(--accent-color);
+  box-shadow: 0 0 1.1rem var(--accent-color);
+  transition: box-shadow 0.1s ease-in-out;
 
   /* box-shadow: -0.5rem 0.5rem 2rem rgb(248, 229, 145), 0.5rem 0.5rem 2rem rgb(206, 62, 62),
     0.5rem -0.5rem 2rem rgb(84, 235, 152); */
 }
 
 .submit-btn:hover {
-  background-color: color-mix(in srgb, var(--accent-color) 100%, black 20%);
+  /* background-color: color-mix(in srgb, var(--accent-color) 100%, black 20%); */
+  box-shadow: 0 0 2rem var(--accent-color);
 }
 
 .submit-btn:active {

@@ -97,7 +97,7 @@ const TranslatorForm = () => {
       return;
     }
 
-    if (text === 'something') {
+    if (text === 'something' || text === 'something ') {
       setTranslatedText('Not literally!');
       return;
     }
