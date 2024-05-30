@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Comfortaa:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+@font-face {
+  font-family: 'Header'; /*a name to be used later*/
+  src: url('../src/fonts/Supreme-Variable.ttf'); /*URL to font*/
+}
 .main-wrapper {
   font-family: 'Raleway', sans-serif;
   font-optical-sizing: auto;
@@ -9,17 +13,22 @@
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  margin-top: 3rem;
+  font-family: 'Header', serif;
+  font-weight: 700;
 }
 
 .bg-gradient-prime {
   position: fixed;
   width: 140vw;
   height: 110vh;
-  right: -80vw;
-  bottom: -20vh;
-  background: radial-gradient(#dbacfa3e, transparent 60%);
+  right: -90vw;
+  bottom: -40vh;
+  background: radial-gradient(#d79cff33, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
 }
 .bg-gradient-secondary {
   position: fixed;
@@ -28,4 +37,6 @@ h1 {
   left: -27vw;
   bottom: -22vh;
   background: radial-gradient(#dbacfa0c, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Form.css';
 import './slider.css';
-import './languageSelector.css';
 import languageList from './languageCodes.json';
 import TextareaAutosize from 'react-textarea-autosize';
 import History from '../History/History';

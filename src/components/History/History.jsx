@@ -5,7 +5,7 @@ import './History.css';
 const History = ({ history }) => {
   return (
     <>
-      {history.length > 0 && <h2>Conversions</h2>}
+      {history.length > 0 && <h2>Language conversions</h2>}
       <ul className="history">
         {history.map(({ languageName, text }, index) => (
           <li key={index}>
