@@ -71,13 +71,14 @@ ul {
 
   resize: none;
 
-  /* box-shadow: 0 0 0.3rem var(--accent-color); */
+  box-shadow: 0 0 0.2rem var(--accent-color);
 }
 
 .submit-btn {
   border-radius: 5em;
   margin: 0;
   padding: 0.7em 2em;
+  /* background-color: white; */
   background-color: var(--accent-color);
 
   font-family: inherit;
@@ -85,7 +86,8 @@ ul {
   font-weight: 600;
   flex-grow: 0;
 
-  /* box-shadow: 0 0 1rem var(--accent-color); */
+  /* box-shadow: -0.5rem 0.5rem 2rem rgb(248, 229, 145), 0.5rem 0.5rem 2rem rgb(206, 62, 62),
+    0.5rem -0.5rem 2rem rgb(84, 235, 152); */
 }
 
 .submit-btn:hover {
