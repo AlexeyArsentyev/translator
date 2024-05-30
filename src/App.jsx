@@ -8,5 +8,7 @@ export default () => (
     <main>
       <TranslatorForm />
     </main>
+    <div className="bg-gradient-prime"></div>
+    <div className="bg-gradient-secondary"></div>
   </div>
 );

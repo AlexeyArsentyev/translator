@@ -3,7 +3,7 @@
 }
 
 :root {
-  --accent-color: rgb(223, 175, 255);
+  --accent-color: #deadff;
   --placeholder-color: rgb(201, 201, 201);
   --translation-area-gap: 5%;
 }

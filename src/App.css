@@ -12,3 +12,20 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
+
+.bg-gradient-prime {
+  position: fixed;
+  width: 140vw;
+  height: 110vh;
+  right: -80vw;
+  bottom: -20vh;
+  background: radial-gradient(#dbacfa3e, transparent 60%);
+}
+.bg-gradient-secondary {
+  position: fixed;
+  width: 70vw;
+  height: 50vh;
+  left: -27vw;
+  bottom: -22vh;
+  background: radial-gradient(#dbacfa0c, transparent 60%);
+}
