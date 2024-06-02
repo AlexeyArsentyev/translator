@@ -70,8 +70,9 @@ ul {
   flex-grow: 1;
 
   resize: none;
-
-  box-shadow: 0 0 0.2rem var(--accent-color);
+}
+.text-input:focus {
+  box-shadow: 0 0 0.5rem var(--accent-color);
 }
 
 .submit-btn {
@@ -184,6 +185,9 @@ ul {
   padding: 0.7em 1.2em;
 }
 
+.language-select:focus {
+  box-shadow: 0 0 0.5rem var(--accent-color);
+}
 @media (max-width: 800px) {
   .translation-area {
     flex-direction: column;
@@ -210,7 +214,8 @@ ul {
     margin: 0;
   }
 }
-@media (max-width: 400px) {
+
+@media (max-width: 430px) {
   .submit-btn {
     padding: 0.7em 1em;
   }
