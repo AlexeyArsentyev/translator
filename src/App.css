@@ -20,6 +20,15 @@ h1 {
   font-weight: 700;
 }
 
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Raleway', serif;
+  font-weight: 500;
+  color: #a2a2a2;
+  line-height: 2rem;
+}
+
 .bg-gradient-prime {
   position: fixed;
   width: 140vw;
