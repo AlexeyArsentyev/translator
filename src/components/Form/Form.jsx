@@ -4,7 +4,7 @@ import './slider.css';
 import languageList from './languageCodes.json';
 import TextareaAutosize from 'react-textarea-autosize';
 import History from '../History/History';
-import copyImg from './copy.svg';
+import copyImg from '../../icons/copy.svg';
 
 const TranslatorForm = () => {
   let key;

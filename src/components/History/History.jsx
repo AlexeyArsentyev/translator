@@ -1,5 +1,5 @@
 import React from 'react';
-import arrowDown from './arrow-down.svg';
+import arrowDown from '../../icons/arrow-down.svg';
 import './History.css';
 
 const History = ({ history }) => {
