@@ -4,7 +4,7 @@
 
 :root {
   --accent-color: #deadff;
-  --placeholder-color: rgb(201, 201, 201);
+  --placeholder-color: rgb(212, 212, 212);
   --translation-area-gap: 5%;
 }
 
@@ -20,13 +20,12 @@
 
 ::placeholder {
   color: var(--placeholder-color);
-  opacity: 0.7; /* Firefox */
+  /* Firefox */
 }
 
 ::-ms-input-placeholder {
   /* Edge 12 -18 */
   color: var(--placeholder-color);
-  opacity: 0.7;
 }
 
 ul {
