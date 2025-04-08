@@ -86,12 +86,11 @@ ul {
   font-weight: 600;
   flex-grow: 0;
 
-  box-shadow: 0 0 1.1rem var(--accent-color);
   transition: box-shadow 0.1s ease-in-out;
 }
 
 .submit-btn:hover {
-  box-shadow: 0 0 2rem var(--accent-color);
+  box-shadow: 0 0 1rem var(--accent-color);
 }
 
 .submit-btn:active {
