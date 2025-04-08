@@ -69,6 +69,7 @@ ul {
   flex-grow: 1;
 
   resize: none;
+  transition: border-color 0.1s ease-in-out;
 }
 .text-input:focus {
   border-color: var(--accent-color);
