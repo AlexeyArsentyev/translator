@@ -46,7 +46,6 @@ ul {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* height: 20rem; */
 }
 
 .text-input,
@@ -79,7 +78,7 @@ ul {
   border-radius: 5em;
   margin: 0;
   padding: 0.7em 2em;
-  /* background-color: white; */
+
   background-color: var(--accent-color);
 
   font-family: inherit;
@@ -89,13 +88,9 @@ ul {
 
   box-shadow: 0 0 1.1rem var(--accent-color);
   transition: box-shadow 0.1s ease-in-out;
-
-  /* box-shadow: -0.5rem 0.5rem 2rem rgb(248, 229, 145), 0.5rem 0.5rem 2rem rgb(206, 62, 62),
-    0.5rem -0.5rem 2rem rgb(84, 235, 152); */
 }
 
 .submit-btn:hover {
-  /* background-color: color-mix(in srgb, var(--accent-color) 100%, black 20%); */
   box-shadow: 0 0 2rem var(--accent-color);
 }
 

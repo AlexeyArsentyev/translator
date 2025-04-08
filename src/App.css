@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Comfortaa:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
-  font-family: 'Header'; /*a name to be used later*/
-  src: url('../src/fonts/Supreme-Variable.ttf'); /*URL to font*/
+  font-family: 'Header';
+  src: url('../src/fonts/Supreme-Variable.ttf');
 }
 .main-wrapper {
   font-family: 'Raleway', sans-serif;
