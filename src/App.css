@@ -14,19 +14,21 @@
 
 h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-bottom: 0;
+  margin-top: 2rem;
   font-family: 'Header', serif;
   font-weight: 700;
 }
 
 .description {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
   font-family: 'Raleway', serif;
   font-weight: 500;
   color: #a2a2a2;
   line-height: 2rem;
+  margin: 0;
+  margin-left: 0.1rem;
+  margin-bottom: 1rem;
 }
 
 .bg-gradient-prime {
